@@ -15,7 +15,7 @@ def test_document_chunk_can_be_created():
         document_types="runbook",
         created_at=datetime.fromisoformat("2024-06-01T00:00:00Z"),
         created_by="commerce-platform-team",
-        test=(
+        content=(
             "Payment authorization failures are retired twice"
             "with a 30 second interval."
         )
@@ -32,7 +32,7 @@ def test_document_chunk_can_be_created():
     assert chunk.document_types == "runbook"
     assert chunk.created_at == datetime.fromisoformat("2024-06-01T00:00:00Z")
     assert chunk.created_by == "commerce-platform-team"
-    assert chunk.test == (
+    assert chunk.content == (
         "Payment authorization failures are retired twice"
         "with a 30 second interval."
     )

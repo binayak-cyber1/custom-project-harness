@@ -18,4 +18,8 @@ class DocumentChunk(BaseModel):
     created_at: datetime
     created_by: str
 
-    test: str
+    content: str
+
+class EmbeddedChunk(BaseModel):
+    chunk: DocumentChunk
+    embedding: list[float]
