@@ -1,10 +1,13 @@
 from pathlib import Path
 
-def load_markdown(file_path:str) -> str:
-    """Load the content of a markdown file as a string."""
-    path = Path(file_path)
+
+def load_markdown(path: Path) -> str:
+    """Load the content of a Markdown file as a string."""
+
     if not path.is_file():
-        raise FileNotFoundError(f"File not found: {file_path}")
+        raise FileNotFoundError(f"File not found: {path}")
+
     if path.suffix.lower() != ".md":
-        raise ValueError(f"Expected a markdown file, got: {file_path}")
+        raise ValueError(f"Expected a Markdown file, got: {path}")
+
     return path.read_text(encoding="utf-8")
