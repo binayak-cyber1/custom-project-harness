@@ -13,7 +13,7 @@ class DocumentChunk(BaseModel):
     system: str
     service: str
     environment: str
-    document_types: str
+    document_type: str
 
     created_at: datetime
     created_by: str

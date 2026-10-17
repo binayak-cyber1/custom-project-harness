@@ -50,7 +50,8 @@ def embed_chunks(
     embedded_chunks: list[EmbeddedChunk] = []
     for chunk in chunks:
         embedding = embedding_provider.embed_text(chunk)
-        validate_embedding(expected_dimension)
+        validate_embedding(embedding, expected_dimension = expected_dimension)
         embedded_chunks.append(EmbeddedChunk(chunk=chunk, embedding=embedding))
     return embedded_chunks
 
+ 

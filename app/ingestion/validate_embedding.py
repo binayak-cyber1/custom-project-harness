@@ -1,14 +1,14 @@
 import math
 
-def validate_embedding(vector: list[float], expected_diamensions: int = 5) -> bool:
-    if expected_diamensions is None:
-        raise ValueError("Expected dimensions cannot be None.")
-    if expected_diamensions <= 0:
-        raise ValueError("Expected dimensions must be a positive integer.")
+def validate_embedding(vector: list[float], expected_dimension: int) -> bool:
+    if expected_dimension is None:
+        raise ValueError("Expected dimension cannot be None.")
+    if expected_dimension <= 0:
+        raise ValueError("Expected dimension must be a positive integer.")
     if not vector:
         raise ValueError("Embedding vector cannot be None.")
-    if expected_diamensions is not None and len(vector) != expected_diamensions:
-        raise ValueError(f"Embedding vector length does not match the expected dimensions: {expected_diamensions}")
+    if expected_dimension is not None and len(vector) != expected_dimension:
+        raise ValueError(f"Embedding vector length {len(vector)} does not match the expected dimension: {expected_dimension}")
     if not all(math.isfinite(v) for v in vector):
         raise ValueError("Embedding vector contains non-finite numbers.")
     if any(math.isnan(v) for v in vector):

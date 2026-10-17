@@ -12,7 +12,7 @@ def test_document_chunk_can_be_created():
         system="oms",
         service="payment-service",
         environment="runbook",
-        document_types="runbook",
+        document_type="runbook",
         created_at=datetime.fromisoformat("2024-06-01T00:00:00Z"),
         created_by="commerce-platform-team",
         content=(
@@ -29,7 +29,7 @@ def test_document_chunk_can_be_created():
     assert chunk.system == "oms"
     assert chunk.service == "payment-service"
     assert chunk.environment == "runbook"
-    assert chunk.document_types == "runbook"
+    assert chunk.document_type == "runbook"
     assert chunk.created_at == datetime.fromisoformat("2024-06-01T00:00:00Z")
     assert chunk.created_by == "commerce-platform-team"
     assert chunk.content == (
