@@ -7,12 +7,12 @@ class FakeEmbeddingProvider:
     def __init__(self):
         self.expected_dimension = 3
 
-    def embed_text(self, chunk):
+    def embed_text(self, text: str) -> list[float]:
         # Return a fake embedding of the expected dimension
         return [0.0] * self.expected_dimension
 
 """ Function to preparing document chunks for testing embedding"""
-def create_chunk_for_test() -> DocumentChunk:
+def create_chunk_for_test() -> list[DocumentChunk]:
     content1 = "This is a sample document content for testing."
     content2 = " It will be chunked and embedded using the FakeEmbeddingProvider."
 
@@ -62,3 +62,11 @@ def test_embed_chunks_with_fake_provider():
     assert isinstance(embedded_chunks[0], EmbeddedChunk)
     assert embedded_chunks[0].embedding == [0.0, 0.0, 0.0]
     assert isinstance(embedded_chunks[1], EmbeddedChunk)
+
+def test_embed_chunks_with_invalid_dimension():
+    provider = FakeEmbeddingProvider()
+    try:
+        # This should raise a ValueError because the expected dimension is not 3
+        embed_chunks(create_chunk_for_test(), provider, expected_dimension=5)
+    except ValueError as e:
+        assert str(e) == "Embedding vector length 3 does not match the expected dimension: 5"
